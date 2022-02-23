@@ -11,11 +11,12 @@ function getMoviesFromDirector(array, director) {
 }
 
 function moviesAverage(movies) {
-  let total = movies.reduce(
-    (prevScore, { score }) => prevScore + (score === '' ? 5 : score),
+  let moviesWithScore = movies.filter((movie) =>  movie.score !== "");
+  let total = moviesWithScore.reduce(
+    (prevScore, { score }) => prevScore + score,
     0
   );
-  let average = (total / movies.length).toFixed(2);
+  let average = (total / moviesWithScore.length).toFixed(2);
   return Number(average);
 }
 
